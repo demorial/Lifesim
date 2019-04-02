@@ -1,6 +1,37 @@
 import time
 import random
-#import numpy as np
+# import numpy as np
+
+
+class Country:
+    # doen met die wat j wil net gedink as j
+    # difficulty will change gebaseer op country
+    def __init__(self, country, saftyRank):
+        self.country = country
+        self.saftyRank = saftyRank
+
+    def getCountry(self):
+        return self.country
+
+    def getSaftyRank(self):
+        return self.saftyRank
+# country = ["Amreica", "France", "Australia", "Switzerland", "China", "Scotland",
+#           "Portugal", "South Africa", "Argentina", "Mexico", "Nigeria", "India", ]
+
+
+countryList = []
+countryList.append(Country("Amreica", 5))
+countryList.append(Country("France", 5))
+countryList.append(Country("Australia", 5))
+countryList.append(Country("Switzerland", 5))
+countryList.append(Country("China", 5))
+countryList.append(Country("Scotland", 5))
+countryList.append(Country("Portugal", 5))
+countryList.append(Country("South Africa", 5))
+countryList.append(Country("Argentina", 5))
+countryList.append(Country("Mexico", 5))
+countryList.append(Country("Nigeria", 5))
+countryList.append(Country("India", 5))
 
 
 class Stats:
@@ -51,8 +82,7 @@ class Person(Stats):
 
 names = ["Jacobus", "Ruan", "Dina", "Michael",
          "Brendan", "Shana", "Dirk", "Werner"]
-country = ["Amreica", "France", "Australia", "Switzerland", "China", "Scotland",
-           "Portugal", "South Africa", "Argentina", "Mexico", "Nigeria", "India", ]
+
 concieved = ["an affair", "a planned pregnancy",
              "a scandal", "a Lab", "an adoption", "a cardboard box"]
 
@@ -61,10 +91,10 @@ age = 0
 # sien get_stats() vir jou ou if statement
 a = random.randint(0, len(concieved)-1)
 b = random.randint(0, 7)
-c = random.randint(0, len(country)-1)
+c = random.randint(0, len(countryList)-1)
 print("Welcome you were born in ", concieved[a])
 print("Your name is:", names[b])
-print("You are born in:", country[c])
+print("You are born in:", countryList[c].getCountry())
 print("age :", age)
 print()
 if a == 5:
@@ -75,7 +105,7 @@ else:
     print("your stats at birth are:")
     # playerX is die class so as jy nog functions onder die class maak kan j dit call met
     # playerX.Function()
-    playerX = Person(names[b], age, country[c], concieved[a])
+    playerX = Person(names[b], age, countryList[c], concieved[a])
     playerX.get_stats()
     print("health: ", playerX.health)
     print("intelligence: ", playerX.intelligence)
