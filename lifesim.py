@@ -84,7 +84,7 @@ names = ["Jacobus", "Ruan", "Dina", "Michael",
          "Brendan", "Shana", "Dirk", "Werner"]
 
 concieved = ["an affair", "a planned pregnancy",
-             "a scandal", "a Lab", "an adoption", "a cardboard box"]
+             "a scandal", "a Lab", "and put up for adoption", "a cardboard box"]
 
 age = 0
 
