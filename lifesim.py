@@ -145,7 +145,7 @@ def path():
 
     path = ""
     while path != "1" and path != "2":
-        path = input("age up? (1 for yes or 2 for no): ")
+        path = input("which path will you take 1 or 2: ")
 
     return path
 
