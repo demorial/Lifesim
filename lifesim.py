@@ -79,6 +79,33 @@ class Person(Stats):
         # hier kan jy print nae n txt file met die values
         pass  # delete die pass as hierdie iets in het
 
+    def Firstpath(self, path):
+        if path == '1':
+            print("You age up")
+            print("age:", age+1)
+            time.sleep(2)
+            print("your new stats are: ")
+            if self.age <= 6:
+                #intro = 100
+                self.happiness = self.happiness + random.randint(-2, 2)
+                self.intelligence = self.intelligence+random.randint(-2, 2)
+                self.looks = self.looks + random.randint(-2, 2)
+
+            elif self.age > 6 and self.age <= 9:
+                self.health = self.health + random.randint(-2, 2)
+                self.happiness = self.happiness + random.randint(-2, 2)
+                self.intelligence = self.intelligence+random.randint(-2, 2)
+                self.looks = self.looks+random.randint(-2, 2)
+
+            elif self.age > 10:
+                self.health = self.health + random.randint(-2, 2)
+                self.happiness = self.happiness + random.randint(-2, 2)
+                self.intelligence = self.intelligence+random.randint(-2, 2)
+                self.looks = self.looks+random.randint(-2, 2)
+
+        else:
+            pass
+
 
 names = ["Jacobus", "Ruan", "Dina", "Michael",
          "Brendan", "Shana", "Dirk", "Werner"]
@@ -101,6 +128,7 @@ if a == 5:
     print("unfortunately your parents did not love you enough and left you to die")
     print()
     print("game over")
+    pass
 else:
     print("your stats at birth are:")
     # playerX is die class so as jy nog functions onder die class maak kan j dit call met
@@ -117,9 +145,17 @@ def path():
 
     path = ""
     while path != "1" and path != "2":
-        path = input("which path will you take? (1 or 2)")
+        path = input("which path will you take 1 or 2: ")
 
     return path
+
+
+pathValue = path()
+playerX.Firstpath(pathValue)
+print("health: ", playerX.health)
+print("intelligence: ", playerX.intelligence)
+print("Looks: ", playerX.looks)
+print("happiness: ", playerX.happiness)
 
 
 def checkpath(path):
