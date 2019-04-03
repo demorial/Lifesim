@@ -20,18 +20,18 @@ class Country:
 
 
 countryList = []
-countryList.append(Country("Amreica", 5))
-countryList.append(Country("France", 5))
-countryList.append(Country("Australia", 5))
-countryList.append(Country("Switzerland", 5))
-countryList.append(Country("China", 5))
-countryList.append(Country("Scotland", 5))
-countryList.append(Country("Portugal", 5))
-countryList.append(Country("South Africa", 5))
-countryList.append(Country("Argentina", 5))
+countryList.append(Country("Amreica", 9))
+countryList.append(Country("France", 6))
+countryList.append(Country("Australia", 4))
+countryList.append(Country("Switzerland", 4))
+countryList.append(Country("China", 3))
+countryList.append(Country("Scotland", 1))
+countryList.append(Country("Portugal", 7))
+countryList.append(Country("South Africa", 3))
+countryList.append(Country("Argentina", 2))
 countryList.append(Country("Mexico", 5))
-countryList.append(Country("Nigeria", 5))
-countryList.append(Country("India", 5))
+countryList.append(Country("Nigeria", 2))
+countryList.append(Country("India", 3))
 
 
 class Stats:
@@ -51,28 +51,31 @@ class Person(Stats):
         self.concieved = concieved
         Stats.__init__(self, looks, health, happiness, intelligence)
 
-    # weet nie hkm j n ifstatement het vir stats het as jy altyd
-    # 0 as die age gan bgn meer nie
-    # sou dink j moet n function hier maak wat as age change
-    # dan kan jy weer die function run
-
     def get_stats(self):
-        if self.age <= 6:
-            self.health = 100
-            self.happiness = random.randint(80, 100)
-            self.intelligence = random.randint(40, 100)
+        # ok so die was entlik n maklike fix al wat
+        # ons moes doen is die country call en dan sy safety rank
+        # self.country.saftyRank want as ons die object maak
+        # eg playerX = Person(names[b], age, countryList[c], concieved[a])
+        # gee ons vir hom country[c] wat n object van country is soos
+        # Country("Nigeria", 2)/country(countryName,SafetyRank)
+        # so ons gebruik safty rank instede van die orde van waar
+        #  die country in die array is
+        if self.country.saftyRank <= 6:
+            self.health = random.randint(5, 50)
+            self.happiness = random.randint(0, 70)
+            self.intelligence = random.randint(10, 100)
             self.looks = random.randint(0, 100)
 
-        elif self.age > 6 and self.age <= 9:
+        elif self.country.saftyRank > 6 and self.age <= 9:
             self.health = random.randint(60, 90)
             self.happiness = random.randint(0, 80)
             self.intelligence = random.randint(10, 100)
             self.looks = random.randint(0, 100)
 
-        elif self.age > 10:
-            self.health = random.randint(5, 50)
-            self.happiness = random.randint(0, 70)
-            self.intelligence = random.randint(10, 100)
+        elif self.country.saftyRank > 10:
+            self.health = random.randint(60, 90)
+            self.happiness = random.randint(80, 100)
+            self.intelligence = random.randint(40, 100)
             self.looks = random.randint(0, 100)
 
     def SaveGame(self):
@@ -82,28 +85,31 @@ class Person(Stats):
     def Firstpath(self, path):
         if path == '1':
             print("You age up")
-            print("age:", age+1)
-            time.sleep(2)
+            self.age += 1
+            print("new age is : ", self.age)
+            time.sleep(1)
             print("your new stats are: ")
-            if self.age <= 6:
-                #intro = 100
+            if self.country.saftyRank <= 6:
+                self.health = self.health + random.randint(-2, 2)
                 self.happiness = self.happiness + random.randint(-2, 2)
                 self.intelligence = self.intelligence+random.randint(-2, 2)
                 self.looks = self.looks + random.randint(-2, 2)
 
-            elif self.age > 6 and self.age <= 9:
+            elif self.country.saftyRank > 6 and self.age <= 9:
                 self.health = self.health + random.randint(-2, 2)
                 self.happiness = self.happiness + random.randint(-2, 2)
                 self.intelligence = self.intelligence+random.randint(-2, 2)
                 self.looks = self.looks+random.randint(-2, 2)
 
-            elif self.age > 10:
+            elif self.country.saftyRank > 10:
                 self.health = self.health + random.randint(-2, 2)
                 self.happiness = self.happiness + random.randint(-2, 2)
                 self.intelligence = self.intelligence+random.randint(-2, 2)
                 self.looks = self.looks+random.randint(-2, 2)
 
         else:
+            # ons pass net want as hy die path kies het j gese moet niks
+            # change nie so as ons nnu die values print gan dit die sele bly
             pass
 
 
